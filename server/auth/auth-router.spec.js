@@ -77,20 +77,20 @@ describe('Auth-Router Endpoints', ()=>{
         //did the token get grabbed?
         expect(token).toBe(res.body.token);
 
-        // //Now send token to check jokes route
-        // console.log('AUTHORIZATION HEADER FOR JOEKS:', {authorization: token})
-        // const jokesRes = await supertest(server)
-        // .get("/api/jokes")
-        // .set('token', token)
-        // // .send({authorization: token}) //sends authorization token
+        //Now send token to check jokes route
+        console.log('AUTHORIZATION HEADER FOR JOEKS:', {authorization: token})
+        const jokesRes = await supertest(server)
+        .get("/api/jokes")
+        .set('authorization', token)
+        // .send({authorization: token}) //sends authorization token
         
-        // //does it return the expected auth code?
-        // expect(jokesRes.status).toBe(200);
-        // //does it return the expected data format?
-        // expect(jokesRes.type).toMatch(/json/);
-        // //does it return the expected data
-        // expect(jokesRes.body).toHaveLength(21)
-        // expect(Array.isArray(jokesRes.body)).toBe(true);
+        //does it return the expected auth code?
+        expect(jokesRes.status).toBe(200);
+        //does it return the expected data format?
+        expect(jokesRes.type).toMatch(/json/);
+        //does it return the expected data
+        expect(jokesRes.body).toHaveLength(20)
+        expect(Array.isArray(jokesRes.body)).toBe(true);
 
     })
 })
