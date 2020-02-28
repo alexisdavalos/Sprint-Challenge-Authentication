@@ -17,10 +17,10 @@ server.use(cors());
 server.use(express.json());
 
 server.use('/api/auth', logger, authRouter);
-server.use('/api/jokes', logger, authenticate, jokesRouter);
+server.use('/api/jokes',  authenticate, jokesRouter);
 
 //sanity check route
-server.get('/', logger,(req, res) => {
+server.get('/', logger, (req, res) => {
     res.status(200).json({ api: "online" });
 })
 
