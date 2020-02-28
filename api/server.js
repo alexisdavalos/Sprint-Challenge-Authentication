@@ -21,7 +21,7 @@ server.use('/api/jokes', logger, authenticate, jokesRouter);
 
 //sanity check route
 server.get('/', logger,(req, res) => {
-    res.json({ api: "online" });
+    res.status(200).json({ api: "online" });
 })
 
 module.exports = server;
