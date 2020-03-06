@@ -13,15 +13,16 @@ describe('Auth-Router Endpoints', ()=>{
     test('POST /api/auth/register', async () =>{
         await db.seed.run()
         const res = await supertest(server)
-            .post('/api/auth/register')
-            .send({"username": "user2", "password": "password"})
-            //does it return the expected auth code?
-            console.log('RES INSIDE TEST', res.body || res.error);
-            expect(res.status).toBe(201);
-            //does it return the expected data format?
-            expect(res.type).toMatch(/json/); // or .toBe("application/json")
-            //does it return the expected data?
-            expect(res.body.id).toBe(2);
+        
+        .post('/api/auth/register')
+        .send({username: "user2", password: "password"})
+        //does it return the expected auth code?
+        console.log('RES INSIDE TEST', res.body || res.error);
+        expect(res.status).toBe(201);
+        //does it return the expected data format?
+        expect(res.type).toMatch(/json/); // or .toBe("application/json")
+        //does it return the expected data?
+        expect(res.body.id).toBe(2);
 
         console.log('RES INSIDE TEST', res.body || res.error)
     })
